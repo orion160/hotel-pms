@@ -1,18 +1,14 @@
 package edu.hotel.pms;
 
-import com.zaxxer.hikari.HikariConfig;
-import com.zaxxer.hikari.HikariDataSource;
+import edu.hotel.pms.db.DaggerDatabase;
 import java.sql.SQLException;
 
 public class Main {
   public static void main(String[] args) {
-    final var config = new HikariConfig();
-    config.setJdbcUrl("jdbc:postgresql://postgres:5432/hotel");
-    config.setUsername("admin");
-    config.setPassword("password");
+    final var db = DaggerDatabase.create();
+    final var ds = db.datasource();
 
-    try (final var dataSource = new HikariDataSource(config);
-        final var c = dataSource.getConnection()) {
+    try (final var c = ds.getConnection()) {
       final var meta = c.getMetaData();
       System.out.println(meta.getDatabaseProductName());
       System.out.println(meta.getDatabaseProductVersion());

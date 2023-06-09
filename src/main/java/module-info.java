@@ -4,4 +4,6 @@ module edu.hotel.pms {
   requires java.sql;
   requires com.zaxxer.hikari;
   requires spring.security.crypto;
+  requires java.inject;
+  requires dagger;
 }

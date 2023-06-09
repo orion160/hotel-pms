@@ -1,5 +1,4 @@
 plugins {
-    java
     application
     jacoco
     id("com.diffplug.spotless") version "6.19.0"
@@ -13,33 +12,26 @@ repositories {
 }
 
 dependencies {
-    val junitVersion = "5.9.1"
-    val mockitoVersion = "5.3.1"
+    testImplementation(libs.junit.jupiter)
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.junit.jupiter)
 
-    val log4jVersion = "2.20.0"
+    implementation(libs.log4j2.api)
+    implementation(libs.log4j2.core)
+    implementation(libs.log4j2.slf4j2.impl)
 
-    val bouncyCastleVersion = "1.73"
-    val springSecurityVersion = "6.1.0"
+    implementation(libs.log4j2.jcl)
 
-    testImplementation(platform("org.junit:junit-bom:$junitVersion"))
-    testImplementation("org.junit.jupiter:junit-jupiter")
-    testImplementation("org.mockito:mockito-core:$mockitoVersion")
-    testImplementation("org.mockito:mockito-junit-jupiter:$mockitoVersion")
+    runtimeOnly(libs.bouncycastle.bcpkix)
+    implementation(libs.spring.security.crypto)
 
-    testImplementation(platform("org.junit:junit-bom:5.9.1"))
-    testImplementation("org.junit.jupiter:junit-jupiter")
+    runtimeOnly(libs.postgresql.driver)
+    implementation(libs.hikaricp.pool)
 
-    implementation("org.apache.logging.log4j:log4j-api:$log4jVersion")
-    implementation("org.apache.logging.log4j:log4j-core:$log4jVersion")
-    implementation("org.apache.logging.log4j:log4j-slf4j2-impl:$log4jVersion")
+    implementation(libs.jakarta.inject.api)
 
-    implementation("org.apache.logging.log4j:log4j-jcl:$log4jVersion")
-
-    implementation("org.bouncycastle:bcpkix-jdk18on:$bouncyCastleVersion")
-    implementation("org.springframework.security:spring-security-crypto:$springSecurityVersion")
-
-    implementation("org.postgresql:postgresql:42.6.0")
-    implementation("com.zaxxer:HikariCP:5.0.1")
+    implementation(libs.dagger)
+    annotationProcessor(libs.dagger.compiler)
 }
 
 tasks.test {
@@ -58,8 +50,10 @@ tasks.check {
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(17))
+        vendor.set(JvmVendorSpec.ADOPTIUM)
+    }
 }
 
 application {

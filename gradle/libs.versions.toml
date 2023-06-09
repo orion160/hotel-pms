@@ -1,0 +1,41 @@
+[versions]
+junit-jupiter = "5.9.1"
+mockito = "5.3.1"
+log4j2 = "2.20.0"
+bouncycastle = "1.73"
+spring = "6.1.0"
+postgresql = "42.6.0"
+hikaricp = "5.0.1"
+
+# TODO: Migrate to jakarta.inject v2+.
+# Dagger currently does not support it.
+# Wait for news and apparently Google Guice DI already supports jakarta
+jakarta-inject = "1.0.3"
+
+dagger = "2.46.1"
+
+liquibase = "4.22.0"
+
+[libraries]
+junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit-jupiter" }
+mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockito" }
+mockito-junit-jupiter = { module = "org.mockito:mockito-junit-jupiter", version.ref = "mockito" }
+
+log4j2-api = { module = "org.apache.logging.log4j:log4j-api", version.ref = "log4j2" }
+log4j2-core = { module = "org.apache.logging.log4j:log4j-core", version.ref = "log4j2" }
+log4j2-slf4j2-impl = { module = "org.apache.logging.log4j:log4j-slf4j2-impl", version.ref = "log4j2" }
+
+log4j2-jcl = { module = "org.apache.logging.log4j:log4j-jcl", version.ref = "log4j2" }
+
+bouncycastle-bcpkix = { module = "org.bouncycastle:bcpkix-jdk18on", version.ref = "bouncycastle" }
+spring-security-crypto = { module = "org.springframework.security:spring-security-crypto", version.ref = "spring" }
+
+postgresql-driver = { module = "org.postgresql:postgresql", version.ref = "postgresql" }
+hikaricp-pool = { module = "com.zaxxer:HikariCP", version.ref = "hikaricp" }
+
+jakarta-inject-api = { module = "jakarta.inject:jakarta.inject-api", version.ref = "jakarta-inject" }
+
+dagger = { module = "com.google.dagger:dagger", version.ref = "dagger" }
+dagger-compiler = { module = "com.google.dagger:dagger-compiler", version.ref = "dagger" }
+
+liquibase-core = { module = "org.liquibase:liquibase-core", version.ref = "liquibase" }

@@ -7,10 +7,12 @@ services:
       dockerfile: Dockerfile
     user: dev
     environment:
-      POSTGRES_PASSWORD: password
-      POSTGRES_USER: admin
-      POSTGRES_DB: hotel
-      POSTGRES_HOSTNAME: postgres
+      DB_JDBC: jdbc:postgresql
+      DB_HOSTNAME: postgres
+      DB_PORT: 5432
+      DB_NAME: hotel
+      DB_USER: admin
+      DB_PASSWORD: password
     volumes:
       - .:/workspace:cached
     command: sleep infinity
