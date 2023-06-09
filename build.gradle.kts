@@ -38,6 +38,8 @@ dependencies {
     implementation("org.bouncycastle:bcpkix-jdk18on:$bouncyCastleVersion")
     implementation("org.springframework.security:spring-security-crypto:$springSecurityVersion")
 
+    implementation("org.postgresql:postgresql:42.6.0")
+    implementation("com.zaxxer:HikariCP:5.0.1")
 }
 
 tasks.test {
@@ -77,5 +79,11 @@ tasks.compileJava {
 
 spotless {
     encoding("UTF-8")
-    kotlinGradle {}
+    java {
+        googleJavaFormat().reflowLongStrings()
+        formatAnnotations()
+    }
+    kotlinGradle {
+
+    }
 }

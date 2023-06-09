@@ -1,23 +1,26 @@
 {
-    "name": "Java Dev Container",
-    "dockerComposeFile": "../docker-compose-postgresql.yaml",
-    "service": "dev_environment",
-    "features": {
-        "ghcr.io/devcontainers/features/git:1.1.5": {
-            "version": "latest",
-            "ppa": false
-        }
-    },
-    "workspaceFolder": "/workspace/",
-    "customizations": {
-        "vscode": {
-            "settings": {},
-            "extensions": [
-                "vscjava.vscode-java-pack",
-                "vscjava.vscode-gradle",
-                "eamodio.gitlens"
-            ]
-        }
-    },
-    "forwardPorts": [80, 5432]
+  "name": "Java Dev Container",
+  "dockerComposeFile": "../docker-compose-postgresql.yaml",
+  "service": "dev_environment",
+  "features": {
+    "ghcr.io/devcontainers/features/git:1.1.5": {
+      "version": "latest",
+      "ppa": false
+    }
+  },
+  "workspaceFolder": "/workspace/",
+  "customizations": {
+    "vscode": {
+      "settings": {},
+      "extensions": [
+        "vscjava.vscode-java-pack",
+        "vscjava.vscode-gradle",
+        "eamodio.gitlens"
+      ]
+    }
+  },
+  "forwardPorts": [
+    80,
+    5432
+  ]
 }

@@ -1,5 +1,5 @@
 package edu.hotel.pms.user;
 
 public interface UserDAO {
-    String getPassword(String username);
+  String getPassword(String username);
 }
